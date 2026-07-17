@@ -5,6 +5,7 @@ let totalTask = document.querySelector("#total-task");
 let compTask = document.querySelector("#comp-task");
 let pendTask= document.querySelector("#rem-task");
 
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 let totalCount = 0;
 let compCount = 0;
@@ -29,26 +30,41 @@ function updateUI(){
     updatePending();
 };
 
+function renderTasks() {
+    container.innerHTML = "";
+    tasks.forEach(task => {
+    let taskDiv = document.createElement("div");
+    let para = document.createElement("p");
+    let deleteBtn = document.createElement("button");
+
+    taskDiv.classList.add("task");
+    deleteBtn.classList.add("delete-btn");
+
+        para.textContent = task.text;
+        deleteBtn.textContent = "❌";
+          
+
+        taskDiv.appendChild(para);
+        taskDiv.appendChild(deleteBtn);
+        container.appendChild(taskDiv);
+    });
+}
+
 btn.addEventListener("click",function(){
 
     let newTask = input.value.trim();
 
     if(!newTask ) return;
 
-    let task = document.createElement("div");
-    let para = document.createElement("p");
-    let deleteBtn = document.createElement("button");
+    tasks.push({
+    text: newTask,
+    completed: false
+});
 
-    task.classList.add("task");
-    deleteBtn.classList.add("delete-btn");
+    localStorage.setItem("tasks",JSON.stringify(tasks));
 
-        para.textContent = newTask;
-        deleteBtn.textContent = "❌";
-          
+    console.log(tasks);
 
-        task.appendChild(para);
-        task.appendChild(deleteBtn)
-        container.appendChild(task);
         totalCount++;
         
         updateUI();
@@ -87,7 +103,7 @@ deleteBtn.addEventListener("click",function(){
 
     };
 });
-    
+    renderTasks();
 });
 input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -95,4 +111,5 @@ input.addEventListener("keydown", function (event) {
 }
 });
 updateUI();
+renderTasks();
 

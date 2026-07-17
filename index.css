@@ -103,17 +103,6 @@ input:focus{
     background:#eaf8ea;
 }
 
-
-.delete-btn{
-    background:red;
-    color:white;
-    border:none;
-    padding:8px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
-}
-
 .delete-btn{
     background:red;
     color:white;
