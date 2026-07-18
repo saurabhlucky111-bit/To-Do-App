@@ -1,63 +1,39 @@
 # 📝 To-Do App
 
-A simple and responsive To-Do application built using HTML, CSS, and JavaScript.
-
-## 📸 Screenshot
-
-![To-Do App](screenshot.png)
+A responsive To-Do application built using HTML, CSS, and JavaScript.
 
 ## 🚀 Features
 
-- ✅ Add new tasks
-- ✅ Delete tasks
-- ✅ Mark tasks as completed
-- ✅ Persistent storage using Local Storage
-- ✅ Tasks remain after page refresh
-- ✅ Live statistics:
-  - Total Tasks
-  - Completed Tasks
-  - Pending Tasks
+- ➕ Add Tasks
+- ✏️ Edit Tasks
+- ❌ Delete Tasks
+- ✅ Mark Tasks as Completed
+- 🔍 Search Tasks (Case Insensitive)
+- 📊 Live Task Statistics
+- 💾 Local Storage Support
+- ⌨️ Add Task using Enter Key
 
 ## 🛠️ Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript (ES6)
-- Local Storage
+- Local Storage API
 
-## 📂 Project Structure
-
-```
-To-Do-App/
-│── index.html
-│── style.css
-│── index.js
-│── README.md
-```
-
-## 💡 Concepts Practiced
+## 📚 What I Learned
 
 - DOM Manipulation
-- Event Listeners
-- Arrays & Objects
-- Array Methods (`forEach`, `filter`, `splice`)
-- Local Storage
-- Dynamic Rendering
+- Event Handling
 - CRUD Operations
-- State Management
+- Local Storage
+- Array Methods (`forEach`, `filter`)
+- Dynamic Rendering
+- JavaScript Debugging
 
-## 📸 Screenshot
+## 🔮 Future Improvements
 
-(Add a screenshot of your app here later.)
-
-## 🔮 Upcoming Features
-
-- ✏️ Edit Task
-- 🔍 Search Tasks
-- 🎯 Filter Tasks (All / Completed / Pending)
-- 🗑️ Clear Completed Tasks
-- 🌙 Dark Mode
-
-## 👨‍💻 Author
-
-**Saurabh Kashyap**
+- Filter (All / Completed / Pending)
+- Clear Completed Tasks
+- Dark Mode
+- Due Dates
+- Drag & Drop Sorting

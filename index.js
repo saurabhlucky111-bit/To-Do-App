@@ -4,6 +4,7 @@ let container = document.querySelector("#container");
 let totalTask = document.querySelector("#total-task");
 let compTask = document.querySelector("#comp-task");
 let pendTask = document.querySelector("#rem-task");
+let searchInput = document.querySelector("#search");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -23,17 +24,26 @@ function renderTasks() {
     let taskDiv = document.createElement("div");
     let para = document.createElement("p");
     let deleteButton = document.createElement("button");
+    let editButton = document.createElement("button");
+
+    let searchText = searchInput.value;
 
     taskDiv.classList.add("task");
     deleteButton.classList.add("delete-btn");
 
     para.textContent = task.text;
-    deleteButton.textContent = "❌";
 
     if (task.completed) {
       taskDiv.classList.add("completed");
       deleteButton.style.backgroundColor = "blue";
       para.style.color = "brown";
+    }
+
+    if (
+      searchText &&
+      !task.text.toLowerCase().includes(searchText.toLowerCase())
+    ) {
+      return;
     }
 
     para.addEventListener("click", function () {
@@ -43,6 +53,22 @@ function renderTasks() {
       renderTasks();
       updateUI();
     });
+
+    editButton.textContent = "✏️";
+
+    editButton.addEventListener("click", function () {
+      let newText = prompt("Enter new task");
+
+      if (!newText || !newText.trim()) return;
+
+      task.text = newText;
+      console.log(tasks);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      renderTasks();
+      updateUI();
+    });
+
+    deleteButton.textContent = "❌";
 
     deleteButton.addEventListener("click", function () {
       tasks.splice(index, 1);
@@ -55,6 +81,7 @@ function renderTasks() {
     });
 
     taskDiv.appendChild(para);
+    taskDiv.appendChild(editButton);
     taskDiv.appendChild(deleteButton);
     container.appendChild(taskDiv);
   });
@@ -85,5 +112,10 @@ input.addEventListener("keydown", function (event) {
     btn.click();
   }
 });
+
+searchInput.addEventListener("input", function () {
+  renderTasks();
+});
+
 updateUI();
 renderTasks();
