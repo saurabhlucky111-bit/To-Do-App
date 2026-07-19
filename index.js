@@ -5,6 +5,11 @@ let totalTask = document.querySelector("#total-task");
 let compTask = document.querySelector("#comp-task");
 let pendTask = document.querySelector("#rem-task");
 let searchInput = document.querySelector("#search");
+let allBtn = document.querySelector("#all-btn");
+let completedBtn = document.querySelector("#completed-btn");
+let pendingBtn = document.querySelector("#pending-btn");
+
+let currentFilter = "all";
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -25,7 +30,6 @@ function renderTasks() {
     let para = document.createElement("p");
     let deleteButton = document.createElement("button");
     let editButton = document.createElement("button");
-
     let searchText = searchInput.value;
 
     taskDiv.classList.add("task");
@@ -43,6 +47,14 @@ function renderTasks() {
       searchText &&
       !task.text.toLowerCase().includes(searchText.toLowerCase())
     ) {
+      return;
+    }
+
+    if (currentFilter === "completed" && !task.completed) {
+      return;
+    }
+
+    if (currentFilter === "pending" && task.completed) {
       return;
     }
 
@@ -114,6 +126,39 @@ input.addEventListener("keydown", function (event) {
 });
 
 searchInput.addEventListener("input", function () {
+  renderTasks();
+});
+
+allBtn.addEventListener("click", function () {
+  currentFilter = "all";
+
+  allBtn.classList.remove("active");
+  completedBtn.classList.remove("active");
+  pendingBtn.classList.remove("active");
+  allBtn.classList.add("active");
+
+  renderTasks();
+});
+
+completedBtn.addEventListener("click", function () {
+  currentFilter = "completed";
+
+  allBtn.classList.remove("active");
+  completedBtn.classList.remove("active");
+  pendingBtn.classList.remove("active");
+  completedBtn.classList.add("active");
+
+  renderTasks();
+});
+
+pendingBtn.addEventListener("click", function () {
+  currentFilter = "pending";
+
+  allBtn.classList.remove("active");
+  completedBtn.classList.remove("active");
+  pendingBtn.classList.remove("active");
+  pendingBtn.classList.add("active");
+
   renderTasks();
 });
 
