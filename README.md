@@ -1,39 +1,118 @@
-# 📝 To-Do App
+# 📝 Responsive To-Do App
 
-A responsive To-Do application built using HTML, CSS, and JavaScript.
+A modern and responsive To-Do List application built using **HTML, CSS, and JavaScript**. This project helps users manage their daily tasks with features like task management, search, filtering, dark mode, and local storage.
+
+---
 
 ## 🚀 Features
 
-- ➕ Add Tasks
-- ✏️ Edit Tasks
-- ❌ Delete Tasks
-- ✅ Mark Tasks as Completed
-- 🔍 Search Tasks (Case Insensitive)
-- 📊 Live Task Statistics
-- 💾 Local Storage Support
-- ⌨️ Add Task using Enter Key
+- ✅ Add new tasks
+- ✏️ Edit existing tasks
+- ❌ Delete tasks
+- ✔️ Mark tasks as completed
+- 🔍 Search tasks instantly
+- 📂 Filter tasks
+  - All
+  - Completed
+  - Pending
+- 📊 Live task statistics
+  - Total Tasks
+  - Completed Tasks
+  - Pending Tasks
+- 🗑️ Clear all completed tasks
+- 🌙 Dark Mode with theme persistence
+- 💾 Data stored using Local Storage
+- 📱 Fully Responsive Design
 
-## 🛠️ Technologies Used
+---
+
+## 🛠️ Built With
 
 - HTML5
 - CSS3
 - JavaScript (ES6)
-- Local Storage API
 
-## 📚 What I Learned
+---
+
+## 📷 Screenshots
+
+### Light Mode
+
+> ![Light Mode] (light mode.png)
+
+### Dark Mode
+
+> ![Dark Mode] (dark mode.png)
+
+### Mobile View
+
+> ![Mobile View] (mobile view.png)
+
+---
+
+## 📂 Project Structure
+
+```
+Responsive-Todo-App/
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+```
+
+---
+
+## 💻 How to Run
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/responsive-todo-app.git
+```
+
+2. Open the project folder.
+
+3. Open `index.html` in your browser.
+
+---
+
+## 🎯 What I Learned
+
+While building this project, I practiced:
 
 - DOM Manipulation
 - Event Handling
 - CRUD Operations
 - Local Storage
-- Array Methods (`forEach`, `filter`)
-- Dynamic Rendering
+- Array Methods (`filter`, `forEach`)
+- Responsive Design
+- Dark Mode Implementation
+- UI State Management
 - JavaScript Debugging
 
-## 🔮 Future Improvements
+---
 
-- Filter (All / Completed / Pending)
-- Clear Completed Tasks
-- Dark Mode
-- Due Dates
+## 🌟 Future Improvements
+
+- Due Date for Tasks
+- Task Categories
 - Drag & Drop Sorting
+- Priority Levels
+- Notifications
+- Backend Integration
+- User Authentication
+
+---
+
+## 👨‍💻 Author
+
+**Saurabh Kashyap**
+
+GitHub: https://github.com/saurabhlucky111-bit
+
+---
+
+## ⭐ If you like this project
+
+Give this repository a ⭐ on GitHub.

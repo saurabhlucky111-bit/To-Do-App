@@ -1,5 +1,7 @@
+//Dom Elements
+
 let input = document.querySelector("input");
-let btn = document.querySelector("button");
+let addBtn = document.querySelector(".add-btn");
 let container = document.querySelector("#container");
 let totalTask = document.querySelector("#total-task");
 let compTask = document.querySelector("#comp-task");
@@ -8,10 +10,14 @@ let searchInput = document.querySelector("#search");
 let allBtn = document.querySelector("#all-btn");
 let completedBtn = document.querySelector("#completed-btn");
 let pendingBtn = document.querySelector("#pending-btn");
+let clearCompleted = document.querySelector("#clear-completed");
+let darkModeButton = document.querySelector("#mode-btn");
 
 let currentFilter = "all";
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// Update Statistics
 
 function updateUI() {
   let totalCount = tasks.length;
@@ -22,6 +28,8 @@ function updateUI() {
   compTask.textContent = `Completed : ${compCount}`;
   pendTask.textContent = `Pending : ${remCount}`;
 }
+
+//Render Task
 
 function renderTasks() {
   container.innerHTML = "";
@@ -57,6 +65,8 @@ function renderTasks() {
     if (currentFilter === "pending" && task.completed) {
       return;
     }
+
+    //Event Listeners
 
     para.addEventListener("click", function () {
       task.completed = !task.completed;
@@ -99,7 +109,15 @@ function renderTasks() {
   });
 }
 
-btn.addEventListener("click", function () {
+darkModeButton.addEventListener("click", function () {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark"));
+  darkModeButton.textContent = document.body.classList.contains("dark")
+    ? "☀️"
+    : "🌙";
+});
+
+addBtn.addEventListener("click", function () {
   let newTask = input.value.trim();
 
   if (!newTask) return;
@@ -121,7 +139,7 @@ btn.addEventListener("click", function () {
 });
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    btn.click();
+    addBtn.click();
   }
 });
 
@@ -161,6 +179,23 @@ pendingBtn.addEventListener("click", function () {
 
   renderTasks();
 });
+
+clearCompleted.addEventListener("click", function () {
+  tasks = tasks.filter((task) => {
+    return !task.completed;
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  renderTasks();
+  updateUI();
+});
+
+let theme = localStorage.getItem("theme");
+if (theme === "true") {
+  document.body.classList.add("dark");
+  darkModeButton.textContent = "☀️";
+} else {
+  darkModeButton.textContent = "🌙";
+}
 
 updateUI();
 renderTasks();
